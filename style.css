@@ -1,0 +1,26 @@
+body {
+    background: #fff;
+    font: normal 14pt Arial;
+    margin: 0;
+}
+
+.products {
+    margin: 0;
+    overflow: hidden;
+}
+.pony {
+    display: inline-block;
+    float:left;
+    margin: 10px;
+    padding: 5px;
+    border: 1px #000 solid;
+}
+
+.filter {
+    position: relative;
+    width: 300px;
+}
+
+.range_slider {
+    margin: 10px 0;
+}
