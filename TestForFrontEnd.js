@@ -146,12 +146,13 @@ function filter() {
                               </form>';
         $('.filter').empty();
         $(".filter").append(filter_content);
-        var s_price;
-        var f_price;
+        var s_price = minPrice();
+        var f_price = maxPrice();
         $(".range_slider").slider({
             range: true,
             min: minPrice(),
-            max: maxPrice() + 1,
+            max: maxPrice() + 0.1,
+            step: 0.1,
             values: [minPrice(), maxPrice() + 1],
             slide: function (event, ui) {
                 s_price = ui.values[0];
