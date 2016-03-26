@@ -146,22 +146,28 @@ function filter() {
                               </form>';
         $('.filter').empty();
         $(".filter").append(filter_content);
+        var s_price;
+        var f_price;
         $(".range_slider").slider({
             range: true,
             min: minPrice(),
             max: maxPrice() + 1,
             values: [minPrice(), maxPrice() + 1],
             slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                s_price = ui.values[0];
+                f_price = ui.values[1];
+                $("#amount").val(ui.values[0] + " руб. - " + ui.values[1] + " руб.");
             }
         });
-        $("#amount").val("$" + $(".range_slider").slider("values", 0) + " - $" + $(".range_slider").slider("values", 1));
+        $("#amount").val($(".range_slider").slider("values", 0) + " руб. - " + $(".range_slider").slider("values", 1) + " руб.");
         $("#submit").click(function () {
             var color = $('#color').val();
             var kind = $('#kind').val();
             var is_new = $('#is_new').val();
+            var prices = $('#amount').val().replace(new RegExp(" руб.", 'g'), "s");
+            console.log(s_price);
             $(".products").empty();
-            show(minPrice(), maxPrice(), color, kind, is_new);
+            show(s_price, f_price, color, kind, is_new);
         });
         $("#close_overlay").click(function () {
             $('.filter').empty();
